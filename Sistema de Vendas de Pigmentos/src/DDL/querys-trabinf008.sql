@@ -4,7 +4,7 @@ USE pigmentationsystem
 
 CREATE TABLE PIGMENTO(
 	id varchar(50) not null,
-    nome vatchar(150) not null,
+    nome varchar(150) not null,
     quantity int,
     preco double not null
 );
