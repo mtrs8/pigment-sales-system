@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.sql.PreparedStatement;
 
 import pigmentation.sales.exceptions.CorInexistenteException;
-import pigmentation.sales.model.Pigmento;
+import pigmentation.sales.model.entities.Pigmento;
 
 
 public class PigmentoDAO extends AbstractDAO{
