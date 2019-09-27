@@ -12,6 +12,10 @@ public class Pigmento extends Services{
 	private int qtdEstoque;
 	private double preco;
 	
+	public Pigmento() {
+		
+	}
+	
 	public Pigmento(String id, String nomeCor, 
 			int qtdEstoque, double preco) {
 		this.id = id;
@@ -36,19 +40,19 @@ public class Pigmento extends Services{
 		return preco;
 	}
 
-	private void setId(String id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
-	private void setNomeCor(String nomeCor) {
+	public void setNomeCor(String nomeCor) {
 		this.nomeCor = nomeCor;
 	}
 
-	private void setQtdEstoque(int qtdEstoque) {
+	public void setQtdEstoque(int qtdEstoque) {
 		this.qtdEstoque = qtdEstoque;
 	}
 
-	private void setPreco(double preco) {
+	public void setPreco(double preco) {
 		this.preco = preco;
 	}
 
