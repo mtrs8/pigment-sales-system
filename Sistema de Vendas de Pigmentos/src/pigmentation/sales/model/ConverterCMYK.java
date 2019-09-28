@@ -1,10 +1,8 @@
-package pigmentation.sales.model.session;
+package pigmentation.sales.model;
 
 import java.awt.Color;
 
-import pigmentation.sales.model.entities.Pigmento;
-
-public class ConverterCMYK {
+public class ConverterCMYK extends Pigmento{
 	
 	private int cianno;
 	private int magenta;
@@ -49,6 +47,12 @@ public class ConverterCMYK {
 
 	private void setKeyBlack(int keyBlack) {
 		this.keyBlack = keyBlack;
+	}
+
+	@Override
+	public double distanceCalculator(Pigmento p1, Pigmento p2) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	

@@ -2,14 +2,14 @@ package pigmentation.sales.App;
 
 import java.util.Scanner;
 
-import pigmentation.sales.model.entities.Pigmento;
+import pigmentation.sales.model.Pigmento;
 
 public class Teste {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
-		Pigmento p = new Pigmento();
+		Pigmento p = null;
 		int verificaPadrao = menu();
 		int sair = 1;
 		while(sair != 0) {
