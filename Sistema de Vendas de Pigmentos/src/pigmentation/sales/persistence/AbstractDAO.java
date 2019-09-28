@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import com.mysql.jdbc.Driver;
+import java.sql.Driver;
 
 public class AbstractDAO {
 	private static final String JDBC_DRIVER = "jdbc:mysql://localhost:3306/pigmentationsystem";//altere p/ seu endereco do banco
@@ -22,8 +22,9 @@ public class AbstractDAO {
 	*/
 	
 	
-	public Connection getConnection() throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
-		DriverManager.registerDriver((Driver)(Class.forName(AbstractDAO.JDBC_DRIVER).newInstance()));
+	public Connection getConnection() throws SQLException, InstantiationException, IllegalAccessException,
+										ClassNotFoundException {
+		DriverManager.registerDriver((java.sql.Driver) (Class.forName(AbstractDAO.JDBC_DRIVER).newInstance()));
 		return DriverManager.getConnection(AbstractDAO.URI, AbstractDAO.USER , AbstractDAO.PWD);
 	}
 }
