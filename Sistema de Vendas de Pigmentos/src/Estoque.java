@@ -17,11 +17,17 @@ public class Estoque {
 		listaDePigmentosRGB.add(pig);
 	}
 	
-	public Pigmento pigmentoMaisProximo(String codigoHexadecimal) {
+	public void addNaListaCMYK(PigmentoCMK pig) {
+		listaDePigmentosCMYK.add(pig);
+	}
+	
+	
+	public PigmentoRGB pigmentoRGBMaisProximo(String codigoHexadecimal) {
 		double menorDistancia = 0.0;
 		PigmentoRGB pigmentoProximo;
+		Color colorRGB = Color.decode(codigoHexadecimal);
 		listaDePigmentosRGB.forEach(pRGB->{
-			if(pRGB.findDistanciaEuclidiana(Color.decode(codigoHexadecimal)) < menorDistancia)
+			if(pRGB.findDistanciaEuclidiana(colorRGB) < menorDistancia)
 			menorDistancia = pRGB.findDistanciaEuclidiana(Color.decode(codigoHexadecimal));
 			pigmentoProximo = pRGB;
 			
@@ -29,6 +35,22 @@ public class Estoque {
 		
 		return pigmentoProximo;
 		
+		
+	}
+												
+											
+	public PigmentoCMYK pigmentoCMYKMaisProximo(String codigoHexadecimal) {
+		
+		double menorDistancia = 0.0;
+		PigmentoRGB pigmentoProximo;
+		listaDePigmentosCMYK.forEach(pCMYK->{
+			if(pCMYK.findDistanciaEuclidiana() < menorDistancia)
+			menorDistancia = pRGB.findDistanciaEuclidiana(Color.decode(codigoHexadecimal));
+			pigmentoProximo = pCMYK;
+			
+		});
+		
+		return pigmentoProximo;
 		
 	}
 	

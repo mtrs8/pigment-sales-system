@@ -53,6 +53,6 @@ public abstract class Pigmento {
 		this.preco = preco;
 	}
 	
-	public abstract Double findDistanciaEuclidiana(Color pigmento);
-
+	public abstract Double findDistanciaEuclidiana(Color pigmentoRGB);
+	
 }
