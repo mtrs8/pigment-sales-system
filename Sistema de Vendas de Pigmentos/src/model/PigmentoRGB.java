@@ -1,3 +1,4 @@
+package model;
 import java.awt.Color;
 
 public class PigmentoRGB extends Pigmento {
@@ -5,17 +6,15 @@ public class PigmentoRGB extends Pigmento {
 	private int red, green, blue;
 	
 	@Override
-	public Double findDistanciaEuclidiana(Color pigmentoRGB) {
+	public Double findDistanciaEuclidiana(Color codigoHexEmRGB) {
 		 
 		double distanciaCalculada;
 		double redDblResultado, greenDblResultado, blueDblResultado;
 		double somaDeCores;
-		
-		
-		
-		redDblResultado = new Double(this.red - pigmentoRGB.getRed());
-		greenDblResultado = new Double(this.green - pigmentoRGB.getGreen());
-		blueDblResultado = new Double(this.blue - pigmentoRGB.getBlue());
+
+		redDblResultado = new Double(this.getRed() - codigoHexEmRGB.getRed());
+		greenDblResultado = new Double(this.getGreen() - codigoHexEmRGB.getGreen());
+		blueDblResultado = new Double(this.getBlue() - codigoHexEmRGB.getBlue());
 		
 		somaDeCores = Math.pow(redDblResultado, 2) + 
 				Math.pow(greenDblResultado, 2) + 

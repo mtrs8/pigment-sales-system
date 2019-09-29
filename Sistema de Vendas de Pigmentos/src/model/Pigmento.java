@@ -1,13 +1,13 @@
+package model;
 import java.awt.Color;
+import java.io.Serializable;
 
-public abstract class Pigmento {
+public abstract class Pigmento implements Serializable {
 	
 	private String nome;
 	private String idPigmento;
 	private double qtdNoEstoque;
 	private double preco;
-	
-	
 	
 	public Pigmento(String nome, String idPigmento, int qtdNoEstoque, double preco) {
 		super();
@@ -53,6 +53,6 @@ public abstract class Pigmento {
 		this.preco = preco;
 	}
 	
-	public abstract Double findDistanciaEuclidiana(Color pigmentoRGB);
+	public abstract Double findDistanciaEuclidiana(Color codigoHexEmRGB);
 	
 }

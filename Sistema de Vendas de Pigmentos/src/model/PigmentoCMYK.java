@@ -1,11 +1,14 @@
+package model;
+
+import java.awt.Color;
 
 public class PigmentoCMYK extends Pigmento {
 	
 	private double cyan, magenta, yellow, keyBlack;
 
 	@Override
-	public Double findDistanciaEuclidiana(int[] corSolicitadaRGB) {
-		this.cyan = 0; this.magenta = 40; this.yellow = 37; this.keyBlack = 29;
+	public Double findDistanciaEuclidiana(Color codigoHexEmRGB) {
+		
 		double distanciaCalculada;
 		double redDblResultado, greenDblResultado, blueDblResultado;
 		double somaDeCores;
@@ -15,9 +18,9 @@ public class PigmentoCMYK extends Pigmento {
 		blueDblResultado = (255 * (1-this.yellow / 100)) * (1-this.keyBlack / 100);
 		
 		
-		redDblResultado -= corSolicitadaRGB[0];
-		greenDblResultado -= corSolicitadaRGB[1];
-		blueDblResultado -= corSolicitadaRGB[2];
+		redDblResultado -= codigoHexEmRGB.getRed();
+		greenDblResultado -= codigoHexEmRGB.getGreen();
+		blueDblResultado -= codigoHexEmRGB.getBlue();
 		
 		
 		somaDeCores = Math.pow(redDblResultado, 2) + 
