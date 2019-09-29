@@ -1,13 +1,20 @@
+package persistence.sql;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
+import ConnectionDAO;
+import Estoque;
+import Pigmento;
+import PigmentoRGB;
+import persistence.EstoqueDAO;
 
 public class EstoqueSQLDAO extends ConnectionDAO implements EstoqueDAO {
 	
 	private static final String SELECT_PIGMENTO_RGB = 
-			"SELECT nome, idPigmento, qtdNoEstoque, preco FROM PIGMENTORGB WHERE qtdNoEstoque >= ?";
+			"SELECT nome, idPigmento, qtdNoEstoque, preco, r, g, b FROM PIGMENTORGB WHERE qtdNoEstoque >= ?";
 	
 	private static final String SELECT_PIGMENTO_CMYK = 
-			"SELECT nome, idPigmento, qtdNoEstoque, preco FROM PIGMENTOCMYK WHERE qtdNoEstoque >= ?";
+			"SELECT nome, idPigmento, qtdNoEstoque, preco,  FROM PIGMENTOCMYK WHERE qtdNoEstoque >= ?";
 	
 	private Estoque estoque = new Estoque();
 	
@@ -19,7 +26,7 @@ public class EstoqueSQLDAO extends ConnectionDAO implements EstoqueDAO {
 
 
 	@Override
-	public Pigmento escolherPigmentoRGB(String codigoHexadecimal) {
+	public void pesquisarPigmentoRGBDisponiveis(String codigoHexadecimal) {
 		try {
 			PreparedStatement stmt = this.getConnection().prepareStatement(EstoqueSQLDAO.SELECT_PIGMENTO_RGB);
 			ResultSet rSet = stmt.executeQuery();
@@ -29,18 +36,16 @@ public class EstoqueSQLDAO extends ConnectionDAO implements EstoqueDAO {
 				pigRGB.setNome(rSet.getString("nome"));
 				pigRGB.setPreco(rSet.getDouble("preco"));
 				pigRGB.setQtdNoEstoque(rSet.getDouble("qtdNoEstoque"));
-				estoque.addNaListaRGB(pigRGB);
-			}
-			
-			
-		return 
 				
+				estoque.addNaListaRGB(pigRGB);
+			}		
 	}
-
+		catch(){
+			
+		}
+}
 	@Override
-	public Pigmento escolherPigmentoCMYK(String codigoHexadecimal) {
-		// TODO Auto-generated method stub
-		return null;
+	public void pesquisarPigmentoCMYKDisponiveis(String codigoHexadecimal) {
 	}
 	
 	

@@ -1,20 +1,21 @@
+import java.awt.Color;
 
 public class PigmentoRGB extends Pigmento {
 	
 	private int red, green, blue;
 	
 	@Override
-	public Double findDistanciaEuclidiana(int[] corSolicitadaRGB) {
-		
-		red = 180; green = 108; blue = 114;
+	public Double findDistanciaEuclidiana(Color pigmentoRGB) {
+		 
 		double distanciaCalculada;
 		double redDblResultado, greenDblResultado, blueDblResultado;
 		double somaDeCores;
 		
 		
-		redDblResultado = new Double(this.red - corSolicitadaRGB[0]);
-		greenDblResultado = new Double(this.green - corSolicitadaRGB[1]);
-		blueDblResultado = new Double(this.blue - corSolicitadaRGB[2]);
+		
+		redDblResultado = new Double(this.red - pigmentoRGB.getRed());
+		greenDblResultado = new Double(this.green - pigmentoRGB.getGreen());
+		blueDblResultado = new Double(this.blue - pigmentoRGB.getBlue());
 		
 		somaDeCores = Math.pow(redDblResultado, 2) + 
 				Math.pow(greenDblResultado, 2) + 
@@ -22,5 +23,33 @@ public class PigmentoRGB extends Pigmento {
 		
 		return distanciaCalculada = Math.sqrt(somaDeCores);
 	}
+
+	public int getRed() {
+		return red;
+	}
+
+	public void setRed(int red) {
+		this.red = red;
+	}
+
+	public int getGreen() {
+		return green;
+	}
+
+	public void setGreen(int green) {
+		this.green = green;
+	}
+
+	public int getBlue() {
+		return blue;
+	}
+
+	public void setBlue(int blue) {
+		this.blue = blue;
+	}
+	
+	
+
+	
 
 }
