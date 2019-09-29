@@ -1,3 +1,5 @@
+import model.PigmentoCMYK;
+import model.PigmentoRGB;
 
 public class Teste {
 

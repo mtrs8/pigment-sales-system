@@ -1,15 +1,22 @@
 package persistence;
 
-import Pigmento;
+import java.sql.SQLException;
+import java.util.Collection;
+
+import model.Estoque;
+import model.Pigmento;
+import model.PigmentoCMYK;
+import model.PigmentoRGB;
 
 public interface EstoqueDAO {
 	
-	public void debitar(Pigmento pigmentoEscolhido);
+	public void debitar(String corEscolhida);
 	
-	public void pesquisarPigmentoRGBDisponiveis(String codigoHexadecimal);
+	public Collection<PigmentoRGB> pesquisarPigmentoRGBDisponiveis(double qtdSolicitada) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException;
 	
-	public void pesquisarPigmentoCMYKDisponiveis(String codigoHexadecimal);
-	
+	public Collection<PigmentoCMYK> pesquisarPigmentoCMYKDisponiveis();
+
+	public Pigmento getInfoPigmento(String idDoPigmento);
 	
 
 }
