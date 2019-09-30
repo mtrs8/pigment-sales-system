@@ -1,6 +1,8 @@
-package loja;
 
 import java.util.Scanner;
+
+import loja.Loja;
+import loja.LojaApp;
 
 public class LojaConsoleUI {
 	
@@ -21,16 +23,22 @@ public class LojaConsoleUI {
 		
 		System.out.println("SOLICITAR PIGMENTO");
 		System.out.println("Informe o pigmento desejado:");
-		codigoHexadecimal = this.sc.nextLine();
+		codigoHexadecimal = sc.nextLine();
 		System.out.println("Informa a quantidade desejada:");
-		qtdDesejada = this.sc.nextDouble();
+		qtdDesejada = sc.nextDouble();
 		
 		this.loja.consultarPigmento(qtdDesejada);
-		//PODE DAR EXCEPTION QUANDO N�O TEM NENHUM PIGMENTO COM A QUANTIDADE DESEJADA
-		//CASO TENHA, AI ELE FAZ A SELE��O CORRETAMENTE, ENT�O TEM QUE FAZER UM IF-ELSE AQUI OU TRY-CATCH
-		
-		
+		//PODE DAR EXCEPTION QUANDO NÃO TEM NENHUM PIGMENTO COM A QUANTIDADE DESEJADA
+		//CASO TENHA, AI ELE FAZ A SELEÇÃO CORRETAMENTE, ENTÃO TEM QUE FAZER UM IF-ELSE AQUI OU TRY-CATCH 
+		/*Matheus:
+		Aí tem que lançar o throws lá na hora da consulta e
+		tratar aqui, quando eu conseguir entender o código posso fazer KK
+		*/
 		this.loja.selecionarPigmento(codigoHexadecimal);
 		
+	}
+	
+	public static void main(String[] args) {
+		(new LojaConsoleUI()).solicitarPigmento();
 	}
 }
