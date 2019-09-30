@@ -15,10 +15,10 @@ import persistence.EstoqueDAO;
 public class EstoqueSQLDAO extends ConnectionDAO implements EstoqueDAO {
 	
 	private static final String SELECT_PIGMENTO_RGB = 
-			"SELECT nome, idPigmento, qtdNoEstoque, preco, r, g, b FROM pigmentorgb WHERE qtdNoEstoque >= ?";
+			"SELECT nome, idPigmento, qtdNoEstoque, preco, red, green, blue FROM pigmentorgb WHERE qtdNoEstoque >= ?";
 	
 	private static final String SELECT_PIGMENTO_CMYK = 
-			"SELECT nome, idPigmento, qtdNoEstoque, preco,  FROM pigmentocmyk WHERE qtdNoEstoque >= ?";
+			"SELECT nome, idPigmento, qtdNoEstoque, preco, cyan, magenta, yellow, keyblack  FROM pigmentocmyk WHERE qtdNoEstoque >= ?";
 	
 	
 	@Override

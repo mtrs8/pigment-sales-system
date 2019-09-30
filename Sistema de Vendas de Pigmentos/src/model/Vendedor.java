@@ -13,6 +13,7 @@ public class Vendedor {
 	
 	public Vendedor() {
 		this.estoquesystem = new EstoqueSQLDAO();
+		this.estoqueFiltrado = new Estoque();
 	}
 	
 	public void consultarPigmentosPorQuantidade(double qtdSolicitada) {
@@ -24,7 +25,6 @@ public class Vendedor {
 		try {
 			this.estoqueFiltrado.addNaListaCMYK(this.estoquesystem.pesquisarPigmentoCMYKDisponiveis(qtdSolicitada));
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

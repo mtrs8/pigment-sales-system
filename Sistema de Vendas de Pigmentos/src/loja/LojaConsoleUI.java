@@ -1,5 +1,7 @@
+package loja;
 
-import java.io.IOException;
+
+import java.util.Locale;
 import java.util.Scanner;
 
 import loja.Loja;
@@ -9,6 +11,7 @@ public class LojaConsoleUI {
 	
 	private LojaApp loja;
 	private Scanner sc;
+	
 	
 	
 	public LojaConsoleUI() {
@@ -22,9 +25,9 @@ public class LojaConsoleUI {
 		String codigoHexadecimal;
 		double qtdDesejada;
 		
-		System.out.println("SOLICITAR PIGMENTO");
+		System.out.println("SOLICITAR PIGMENTO\n");
 		System.out.println("Informe o pigmento desejado:");
-		codigoHexadecimal = sc.nextLine();
+		codigoHexadecimal = sc.next();
 		System.out.println("Informa a quantidade desejada:");
 		qtdDesejada = sc.nextDouble();
 		
@@ -47,14 +50,11 @@ public class LojaConsoleUI {
 
 	}
 	
-	public static void main(String[] args) throws ClassNotFoundException, IOException {
-		(new LojaConsoleUI()).run();
-	}
 	
-<<<<<<< HEAD
 	public static void main(String[] args) {
+		Locale.setDefault(Locale.US);
 		(new LojaConsoleUI()).solicitarPigmento();
+		
 	}
-=======
->>>>>>> master
+
 }
