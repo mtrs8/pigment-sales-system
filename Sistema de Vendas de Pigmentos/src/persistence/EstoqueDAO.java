@@ -14,7 +14,7 @@ public interface EstoqueDAO {
 	
 	public Collection<PigmentoRGB> pesquisarPigmentoRGBDisponiveis(double qtdSolicitada) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException;
 	
-	public Collection<PigmentoCMYK> pesquisarPigmentoCMYKDisponiveis();
+	public Collection<PigmentoCMYK> pesquisarPigmentoCMYKDisponiveis(double qtdSolicitada) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException;
 
 	public Pigmento getInfoPigmento(String idDoPigmento);
 	

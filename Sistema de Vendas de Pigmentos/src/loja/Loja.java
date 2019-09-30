@@ -6,6 +6,7 @@ import model.Vendedor;
 public class Loja implements LojaApp {
 	
 	private Vendedor vendedor;
+	private Pigmento pigmentoSelecionado;
 	
 	
 	public Loja() {
@@ -13,8 +14,8 @@ public class Loja implements LojaApp {
 	}
 	
 	public void selecionarPigmento(String codigoHexadecimal) {
-		Pigmento pigmentoSelecionado = this.vendedor.getInfoDoPigmentoSelecionado(codigoHexadecimal);
-		
+		 this.pigmentoSelecionado = this.vendedor.getInfoDoPigmentoSelecionado(codigoHexadecimal);
+		 
 	}
 
 	@Override
@@ -22,6 +23,10 @@ public class Loja implements LojaApp {
 		this.vendedor.consultarPigmentosPorQuantidade(qtdSolicitada);
 		//PODE DAR EXCEPTION QUANDO NÃO TEM NENHUM PIGMENTO COM A QUANTIDADE DESEJADA
 		
+	}
+	
+	public String teste() {
+		return this.pigmentoSelecionado.getNome();
 	}
 	
 	
