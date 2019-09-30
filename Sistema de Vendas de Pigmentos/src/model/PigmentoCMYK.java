@@ -29,6 +29,40 @@ public class PigmentoCMYK extends Pigmento {
 		
 		return distanciaCalculada = Math.sqrt(somaDeCores);
 	}
+
+	public double getCyan() {
+		return cyan;
+	}
+
+	public void setCyan(double cyan) {
+		this.cyan = cyan;
+	}
+
+	public double getMagenta() {
+		return magenta;
+	}
+
+	public void setMagenta(double magenta) {
+		this.magenta = magenta;
+	}
+
+	public double getYellow() {
+		return yellow;
+	}
+
+	public void setYellow(double yellow) {
+		this.yellow = yellow;
+	}
+
+	public double getKeyBlack() {
+		return keyBlack;
+	}
+
+	public void setKeyBlack(double keyBlack) {
+		this.keyBlack = keyBlack;
+	}
+	
+	
 	
 
 }

@@ -1,4 +1,5 @@
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import loja.Loja;
@@ -36,9 +37,24 @@ public class LojaConsoleUI {
 		*/
 		this.loja.selecionarPigmento(codigoHexadecimal);
 		
+		System.out.println(this.loja.teste());
+		
 	}
 	
+	public void run() {
+		
+		this.solicitarPigmento();
+
+	}
+	
+	public static void main(String[] args) throws ClassNotFoundException, IOException {
+		(new LojaConsoleUI()).run();
+	}
+	
+<<<<<<< HEAD
 	public static void main(String[] args) {
 		(new LojaConsoleUI()).solicitarPigmento();
 	}
+=======
+>>>>>>> master
 }

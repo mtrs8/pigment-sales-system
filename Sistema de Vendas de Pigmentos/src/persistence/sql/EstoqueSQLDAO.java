@@ -15,10 +15,10 @@ import persistence.EstoqueDAO;
 public class EstoqueSQLDAO extends ConnectionDAO implements EstoqueDAO {
 	
 	private static final String SELECT_PIGMENTO_RGB = 
-			"SELECT nome, idPigmento, qtdNoEstoque, preco, r, g, b FROM PIGMENTORGB WHERE qtdNoEstoque >= ?";
+			"SELECT nome, idPigmento, qtdNoEstoque, preco, r, g, b FROM pigmentorgb WHERE qtdNoEstoque >= ?";
 	
 	private static final String SELECT_PIGMENTO_CMYK = 
-			"SELECT nome, idPigmento, qtdNoEstoque, preco,  FROM PIGMENTOCMYK WHERE qtdNoEstoque >= ?";
+			"SELECT nome, idPigmento, qtdNoEstoque, preco,  FROM pigmentocmyk WHERE qtdNoEstoque >= ?";
 	
 	
 	@Override
@@ -26,7 +26,7 @@ public class EstoqueSQLDAO extends ConnectionDAO implements EstoqueDAO {
 		List<PigmentoRGB> listaDePigmentosRGBDisponiveis = new ArrayList<PigmentoRGB>();
 		try {
 			PreparedStatement stmt = this.getConnection().prepareStatement(EstoqueSQLDAO.SELECT_PIGMENTO_RGB);
-			//IMPLEMENTAR O PARAMTRO DA QUANTIDADE DE TINTA SOLICITADA
+			stmt.setDouble(1, qtdSolicitada);
 			ResultSet rSet = stmt.executeQuery();
 			while(rSet.next()) {
 				PigmentoRGB pigRGB = new PigmentoRGB();
@@ -54,27 +54,7 @@ public class EstoqueSQLDAO extends ConnectionDAO implements EstoqueDAO {
 		}
 		return listaDePigmentosRGBDisponiveis;
 }
-	
-	@Override
-	public Collection<PigmentoCMYK> pesquisarPigmentoCMYKDisponiveis() {
-		List<PigmentoCMYK> listaDePigmentosCMYKDisponiveis = new ArrayList<PigmentoCMYK>();
-		try {
-			PreparedStatement stmt = this.getConnection().prepareStatement(EstoqueSQLDAO.SELECT_PIGMENTO_CMYK);
-			ResultSet rSet = stmt.executeQuery();
-			while(rSet.next()) {
-				PigmentoCMYK pigCMYK = new PigmentoCMYK();
-				pigCMYK.setId((rSet.getString("idPigmento")));
-				pigCMYK.setNome(rSet.getString("nome"));
-				pigCMYK.setPreco(rSet.getDouble("preco"));
-				pigCMYK.setQtdNoEstoque(rSet.getDouble("qtdNoEstoque"));
-				listaDePigmentosCMYKDisponiveis.add(pigCMYK);
-			}		
-		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
-		return listaDePigmentosCMYKDisponiveis;
-		
-	}
+
 
 	@Override
 	public void debitar(String corEscolhida) {
@@ -85,7 +65,46 @@ public class EstoqueSQLDAO extends ConnectionDAO implements EstoqueDAO {
 	@Override
 	public Pigmento getInfoPigmento(String idDoPigmento) {
 		//SELECT PEGANDO O PIGMENTO ESCOLHIDO A PARTIR DO ID PASSADO NA CLASSE VENDEDOR
-		return pigmento;
+		return null;
+	}
+
+
+	@Override
+	public Collection<PigmentoCMYK> pesquisarPigmentoCMYKDisponiveis(double qtdSolicitada)
+			throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+		List<PigmentoCMYK> listaDePigmentosCMYKDisponiveis = new ArrayList<PigmentoCMYK>();
+		try {
+			PreparedStatement stmt = this.getConnection().prepareStatement(EstoqueSQLDAO.SELECT_PIGMENTO_CMYK);
+			stmt.setDouble(1, qtdSolicitada);
+			ResultSet rSet = stmt.executeQuery();
+			while(rSet.next()) {
+				PigmentoCMYK pigCMYK = new PigmentoCMYK();
+				pigCMYK.setId((rSet.getString("idPigmento")));
+				pigCMYK.setNome(rSet.getString("nome"));
+				pigCMYK.setPreco(rSet.getDouble("preco"));
+				pigCMYK.setQtdNoEstoque(rSet.getDouble("qtdNoEstoque"));
+				pigCMYK.setCyan(rSet.getInt("cyan"));
+				pigCMYK.setMagenta(rSet.getInt("magenta"));
+				pigCMYK.setYellow(rSet.getInt("yellow"));
+				pigCMYK.setKeyBlack(rSet.getInt("keyblack"));
+				listaDePigmentosCMYKDisponiveis.add(pigCMYK);
+			}		
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			
+		}
+		return listaDePigmentosCMYKDisponiveis;
 	}
 	
 	

@@ -8,7 +8,7 @@ import persistence.sql.EstoqueSQLDAO;
 public class Vendedor {
 	
 	private EstoqueDAO estoquesystem;
-	private Estoque estoqueSelecionado;
+	private Estoque estoqueFiltrado;
 	
 	
 	public Vendedor() {
@@ -17,15 +17,20 @@ public class Vendedor {
 	
 	public void consultarPigmentosPorQuantidade(double qtdSolicitada) {
 		try {
-			this.estoqueSelecionado.addNaListaRGB(this.estoquesystem.pesquisarPigmentoRGBDisponiveis(qtdSolicitada));
+			this.estoqueFiltrado.addNaListaRGB(this.estoquesystem.pesquisarPigmentoRGBDisponiveis(qtdSolicitada));
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
-		this.estoqueSelecionado.addNaListaCMYK(this.estoquesystem.pesquisarPigmentoCMYKDisponiveis());
+		try {
+			this.estoqueFiltrado.addNaListaCMYK(this.estoquesystem.pesquisarPigmentoCMYKDisponiveis(qtdSolicitada));
+		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public Pigmento getInfoDoPigmentoSelecionado(String codigoHexadecimal) {
-		String idDoPigmento = this.estoqueSelecionado.getIdPigmentoMaisProximo(codigoHexadecimal);
+		String idDoPigmento = this.estoqueFiltrado.getIdPigmentoMaisProximo(codigoHexadecimal);
 		Pigmento pig = this.estoquesystem.getInfoPigmento(idDoPigmento);
 		return pig;
 	}
