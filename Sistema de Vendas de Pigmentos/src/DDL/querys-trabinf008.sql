@@ -23,8 +23,7 @@ CREATE TABLE PIGMENTOCMYK(
   black int not null
 );
 
-INSERT INTO pigmentocmyk(id, preco, nome, quantity,
-						cianno, magenta, yellow, black)
+INSERT INTO pigmentocmyk(id, preco, nome, quantity, cianno, magenta, yellow, black)
 VALUES("#FFFFFF", 7.50, "Branco", 30, 0, 0, 0, 0);
 					
 INSERT INTO pigmentorbg(id, nome, preco, quantity, red, green, blue)
