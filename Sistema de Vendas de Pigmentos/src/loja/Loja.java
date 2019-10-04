@@ -1,5 +1,7 @@
 package loja;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Pigmento;
 import model.Vendedor;
 
@@ -20,8 +22,12 @@ public class Loja implements LojaApp {
 
 	@Override
 	public void consultarPigmento(double qtdSolicitada) {
-		this.vendedor.consultarPigmentosPorQuantidade(qtdSolicitada);
-		//PODE DAR EXCEPTION QUANDO NÃO TEM NENHUM PIGMENTO COM A QUANTIDADE DESEJADA
+            try {
+                this.vendedor.consultarPigmentosPorQuantidade(qtdSolicitada);
+                //PODE DAR EXCEPTION QUANDO Nï¿½O TEM NENHUM PIGMENTO COM A QUANTIDADE DESEJADA
+            } catch (Exception ex) {
+                Logger.getLogger(Loja.class.getName()).log(Level.SEVERE, null, ex);
+            }
 		
 	}
 	

@@ -47,7 +47,6 @@ public class LojaConsoleUI {
 	public void run() {
 		
 		this.solicitarPigmento();
-
 	}
 	
 	

@@ -16,16 +16,16 @@ public class Vendedor {
 		this.estoqueFiltrado = new Estoque();
 	}
 	
-	public void consultarPigmentosPorQuantidade(double qtdSolicitada) {
+	public void consultarPigmentosPorQuantidade(double qtdSolicitada) throws Exception {
 		try {
 			this.estoqueFiltrado.addNaListaRGB(this.estoquesystem.pesquisarPigmentoRGBDisponiveis(qtdSolicitada));
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			throw new Exception(e);
 		}
 		try {
 			this.estoqueFiltrado.addNaListaCMYK(this.estoquesystem.pesquisarPigmentoCMYKDisponiveis(qtdSolicitada));
 		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			throw new Exception(e);
 		}
 	}
 	
