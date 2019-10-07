@@ -32,12 +32,7 @@ public class LojaConsoleUI {
 		qtdDesejada = sc.nextDouble();
 		
 		this.loja.consultarPigmento(qtdDesejada);
-		//PODE DAR EXCEPTION QUANDO NÃO TEM NENHUM PIGMENTO COM A QUANTIDADE DESEJADA
-		//CASO TENHA, AI ELE FAZ A SELEÇÃO CORRETAMENTE, ENTÃO TEM QUE FAZER UM IF-ELSE AQUI OU TRY-CATCH 
-		/*Matheus:
-		Aí tem que lançar o throws lá na hora da consulta e
-		tratar aqui, quando eu conseguir entender o código posso fazer KK
-		*/
+
 		this.loja.selecionarPigmento(codigoHexadecimal);
 		
 		System.out.println(this.loja.teste());
