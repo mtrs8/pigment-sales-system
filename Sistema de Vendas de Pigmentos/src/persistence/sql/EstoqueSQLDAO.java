@@ -5,8 +5,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
-import model.Estoque;
 import model.Pigmento;
 import model.PigmentoCMYK;
 import model.PigmentoRGB;
@@ -26,9 +24,16 @@ public class EstoqueSQLDAO extends ConnectionDAO implements EstoqueDAO {
 	private static final String SELECT_INFO_PIGMENTOCMYK = 
 			"SELECT id, nome, qtdNoEstoque, preco FROM pigmentoCMYK WHERE id = ?";
 	
+	private static final String UPDATE_QTD_NO_ESTOQUE_PIGMENTORGB = 
+			"UPDATE pigmentoRGB SET qtdNoEstoque = ? WHERE id = ?";
+	
+	private static final String UPDATE_QTD_NO_ESTOQUE_PIGMENTOCMYK = 
+			"UPDATE pigmentoCMYK SET qtdNoEstoque = ? WHERE id = ?";
+	
+	
 	
 	@Override
-	public Collection<PigmentoRGB> pesquisarPigmentoRGBDisponiveis(double qtdSolicitada){
+	public Collection<PigmentoRGB> pesquisarPigmentoRGBDisponiveis(double qtdSolicitada) throws ClassNotFoundException{
 		List<PigmentoRGB> listaDePigmentosRGBDisponiveis = new ArrayList<PigmentoRGB>();
 		try {
 			PreparedStatement stmt = this.getConnection().prepareStatement(EstoqueSQLDAO.SELECT_PIGMENTO_RGB);
@@ -51,9 +56,6 @@ public class EstoqueSQLDAO extends ConnectionDAO implements EstoqueDAO {
 		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -63,9 +65,35 @@ public class EstoqueSQLDAO extends ConnectionDAO implements EstoqueDAO {
 
 
 	@Override
-	public void debitar(String corEscolhida) {
-		// TODO Auto-generated method stub
-		
+	public void debitar(String id, double qtd){
+		PreparedStatement stmtRGB = null;
+		PreparedStatement stmtCMYK = null;
+		try{
+			stmtRGB = this.getConnection().prepareStatement(EstoqueSQLDAO.UPDATE_QTD_NO_ESTOQUE_PIGMENTORGB);
+			stmtRGB.setDouble(1, qtd);
+			stmtRGB.setString(2, id);
+			int resultSet = stmtRGB.executeUpdate();
+			stmtRGB.close();
+			if(resultSet == 0) {
+				stmtCMYK = this.getConnection().prepareStatement(EstoqueSQLDAO.UPDATE_QTD_NO_ESTOQUE_PIGMENTOCMYK);
+				stmtCMYK.setDouble(1, qtd);
+				stmtCMYK.setString(2, id);
+				resultSet = stmtRGB.executeUpdate();
+				stmtCMYK.close();
+			}
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override

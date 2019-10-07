@@ -6,8 +6,8 @@ public class PigmentoCMYK extends Pigmento {
 	
 	private double cyan, magenta, yellow, keyBlack;
 
-	@Override
-	public Double findDistanciaEuclidiana(Color codigoHexEmRGB) {
+	
+	public double findDistanciaEuclidiana(Color codigoHexEmRGB) {
 		
 		double distanciaCalculada;
 		double redDblResultado, greenDblResultado, blueDblResultado;

@@ -31,8 +31,12 @@ public class Vendedor {
 	
 	public Pigmento getInfoDoPigmentoSelecionado(String codigoHexadecimal) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 		String idDoPigmento = this.estoqueFiltrado.getIdPigmentoMaisProximo(codigoHexadecimal);
-		Pigmento pig = this.estoquesystem.getInfoPigmento(idDoPigmento);
-		return pig;
+		return this.estoquesystem.getInfoPigmento(idDoPigmento);
+	}
+
+
+	public void debitarQtdNoBanco(String id, double qtd) {
+		this.estoquesystem.debitar(id, qtd);
 	}
 
 

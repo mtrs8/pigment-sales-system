@@ -1,6 +1,8 @@
 package model;
 
-public abstract class Pigmento implements IPigmentoCalculo {
+import java.awt.Color;
+
+public abstract class Pigmento{
 	
 	private String nome;
 	private String id;
@@ -50,6 +52,9 @@ public abstract class Pigmento implements IPigmentoCalculo {
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
+	
+	public abstract double findDistanciaEuclidiana(Color codigoHexEmRGB);
+
 	
 	
 }

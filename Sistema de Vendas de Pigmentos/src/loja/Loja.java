@@ -8,8 +8,8 @@ import model.Vendedor;
 
 public class Loja implements LojaApp {
 	
-	private Vendedor vendedor;
-	private Pigmento pigmentoSelecionado;
+	public Vendedor vendedor;
+	public Pigmento pigmentoSelecionado;
 	
 	
 	public Loja() {
@@ -30,16 +30,36 @@ public class Loja implements LojaApp {
 	public void consultarPigmento(double qtdSolicitada) {
             try {
                 this.vendedor.consultarPigmentosPorQuantidade(qtdSolicitada);
-            } catch (Exception ex) {
-                Logger.getLogger(Loja.class.getName()).log(Level.SEVERE, null, ex);
-            }
-		
+            } catch (Exception e) {
+				e.printStackTrace();
+			} 
 	}
 	
-	public String teste() {
+	@Override
+	public void debitar(double qtdDesejada) {
+		double qtdRestante = this.pigmentoSelecionado.getQtdNoEstoque() - qtdDesejada;
+		this.vendedor.debitarQtdNoBanco(this.pigmentoSelecionado.getId(), qtdRestante);
+	}
+
+	
+
+	@Override
+	public String getNomePigmento() {
 		return this.pigmentoSelecionado.getNome();
 	}
+
+	@Override
+	public double getPrecoPigmento() {
+		return this.pigmentoSelecionado.getPreco();
+	}
+
+	@Override
+	public String getIdPigmento() {
+		return this.pigmentoSelecionado.getId();
+	}
 	
+	
+
 	
 	
 }

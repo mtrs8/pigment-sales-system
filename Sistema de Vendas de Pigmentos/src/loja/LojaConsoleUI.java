@@ -35,7 +35,33 @@ public class LojaConsoleUI {
 
 		this.loja.selecionarPigmento(codigoHexadecimal);
 		
-		System.out.println(this.loja.teste());
+		System.out.println("Pigmento selecionado! Segue as informações: ");
+		System.out.println("ID: " + this.loja.getIdPigmento());
+		System.out.println("Nome: " + this.loja.getNomePigmento());
+		System.out.println("Preço: " + this.loja.getPrecoPigmento());
+		
+		int op = -1;
+		
+		while(op!=0) {
+			System.out.println("Deseja comprar este pigmento?");
+			op = sc.nextInt();
+			
+			switch(op) {
+			
+			case 0: {
+				System.out.println("Saindo então...");
+				op=0;
+				break;
+			}
+			
+			case 1: {
+				System.out.println("Vumbora");
+				this.loja.debitar(qtdDesejada);
+				System.out.println("Foi");
+			}
+				
+			}
+		}
 		
 	}
 	

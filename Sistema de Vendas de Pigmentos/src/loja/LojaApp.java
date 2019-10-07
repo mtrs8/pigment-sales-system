@@ -8,7 +8,12 @@ public interface LojaApp {
 
 	public void consultarPigmento(double qtdSolicitada);
 	
-	public String teste();
+	public String getNomePigmento();
 	
+	public double getPrecoPigmento();
 	
+	public String getIdPigmento();
+	
+	public void debitar(double qtdDesejada);
+
 }

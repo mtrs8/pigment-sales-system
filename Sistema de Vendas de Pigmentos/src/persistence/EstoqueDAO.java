@@ -10,7 +10,7 @@ import model.PigmentoRGB;
 
 public interface EstoqueDAO {
 	
-	public void debitar(String corEscolhida);
+	public void debitar(String id, double qtd);
 	
 	public Collection<PigmentoRGB> pesquisarPigmentoRGBDisponiveis(double qtdSolicitada) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException;
 	

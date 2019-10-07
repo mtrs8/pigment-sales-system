@@ -5,16 +5,16 @@ public class PigmentoRGB extends Pigmento {
 	
 	private int red, green, blue;
 	
-	@Override
-	public Double findDistanciaEuclidiana(Color codigoHexEmRGB) {
+	
+	public double findDistanciaEuclidiana(Color codigoHexEmRGB) {
 		 
 		double distanciaCalculada;
 		double redDblResultado, greenDblResultado, blueDblResultado;
 		double somaDeCores;
 
-		redDblResultado = new Double(this.getRed() - codigoHexEmRGB.getRed());
-		greenDblResultado = new Double(this.getGreen() - codigoHexEmRGB.getGreen());
-		blueDblResultado = new Double(this.getBlue() - codigoHexEmRGB.getBlue());
+		redDblResultado = (double) (this.getRed() - codigoHexEmRGB.getRed());
+		greenDblResultado = (double) (this.getGreen() - codigoHexEmRGB.getGreen());
+		blueDblResultado = (double) (this.getBlue() - codigoHexEmRGB.getBlue());
 		
 		somaDeCores = Math.pow(redDblResultado, 2) + 
 				Math.pow(greenDblResultado, 2) + 
