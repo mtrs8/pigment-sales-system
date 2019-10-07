@@ -9,8 +9,8 @@ public class Estoque {
 	
 	public List<PigmentoRGB> listaDePigmentosRGB = new ArrayList<PigmentoRGB>();
 	public List<PigmentoCMYK> listaDePigmentosCMYK = new ArrayList<PigmentoCMYK>();
-	private double menorDistancia = 0.0;
-	private String idPigmentoEscolhido;
+	private double menorDistancia = -1.0;
+	public String idPigmentoEscolhido;
 	
 	public Estoque() {
 		
@@ -27,19 +27,31 @@ public class Estoque {
 	
 	
 	public void pigmentoRGBMaisProximo(String codigoHexadecimal) {
+		double mD;
 		Color colorRGB = Color.decode(codigoHexadecimal);
 		this.listaDePigmentosRGB.forEach(pRGB->{
-			if(pRGB.findDistanciaEuclidiana(colorRGB) < menorDistancia)
+			if(this.menorDistancia == -1.0) {
 				this.idPigmentoEscolhido = pRGB.getId();
+				this.menorDistancia = pRGB.findDistanciaEuclidiana(colorRGB);
+			}
+			else if(pRGB.findDistanciaEuclidiana(colorRGB) < this.menorDistancia) {
+				this.idPigmentoEscolhido = pRGB.getId();
+				this.menorDistancia = pRGB.findDistanciaEuclidiana(colorRGB);
+			}
 		});
 	}
 																							
 	public void pigmentoCMYKMaisProximo(String codigoHexadecimal) {
 		Color colorRGB = Color.decode(codigoHexadecimal);
 		this.listaDePigmentosCMYK.forEach(pCMYK->{
-			if(pCMYK.findDistanciaEuclidiana(colorRGB) < menorDistancia)
-			this.idPigmentoEscolhido = pCMYK.getId();
-			
+			if(this.menorDistancia == -1.0) {
+				this.idPigmentoEscolhido = pCMYK.getId();
+				this.menorDistancia = pCMYK.findDistanciaEuclidiana(colorRGB);
+			}
+			else if(pCMYK.findDistanciaEuclidiana(colorRGB) < menorDistancia) {
+				this.idPigmentoEscolhido = pCMYK.getId();
+				this.menorDistancia = pCMYK.findDistanciaEuclidiana(colorRGB);
+			}
 		});
 	}
 	

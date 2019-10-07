@@ -15,10 +15,16 @@ import persistence.EstoqueDAO;
 public class EstoqueSQLDAO extends ConnectionDAO implements EstoqueDAO {
 	
 	private static final String SELECT_PIGMENTO_RGB = 
-			"SELECT nome, idPigmento, qtdNoEstoque, preco, red, green, blue FROM pigmentorgb WHERE qtdNoEstoque >= ?";
+			"SELECT id, nome, qtdNoEstoque, preco, red, green, blue FROM pigmentorgb WHERE qtdNoEstoque >= ?";
 	
 	private static final String SELECT_PIGMENTO_CMYK = 
-			"SELECT nome, idPigmento, qtdNoEstoque, preco, cyan, magenta, yellow, keyblack  FROM pigmentocmyk WHERE qtdNoEstoque >= ?";
+			"SELECT id, nome, qtdNoEstoque, preco, cianno, magenta, yellow, keyblack  FROM pigmentocmyk WHERE qtdNoEstoque >= ?";
+	
+	private static final String SELECT_INFO_PIGMENTORGB = 
+			"SELECT id, nome, qtdNoEstoque, preco FROM pigmentorgb WHERE id = ?";
+	
+	private static final String SELECT_INFO_PIGMENTOCMYK = 
+			"SELECT id, nome, qtdNoEstoque, preco FROM pigmentoCMYK WHERE id = ?";
 	
 	
 	@Override
@@ -30,7 +36,7 @@ public class EstoqueSQLDAO extends ConnectionDAO implements EstoqueDAO {
 			ResultSet rSet = stmt.executeQuery();
 			while(rSet.next()) {
 				PigmentoRGB pigRGB = new PigmentoRGB();
-				pigRGB.setId((rSet.getString("idPigmento")));
+				pigRGB.setId((rSet.getString("id")));
 				pigRGB.setNome(rSet.getString("nome"));
 				pigRGB.setPreco(rSet.getDouble("preco"));
 				pigRGB.setQtdNoEstoque(rSet.getDouble("qtdNoEstoque"));
@@ -63,8 +69,34 @@ public class EstoqueSQLDAO extends ConnectionDAO implements EstoqueDAO {
 	}
 
 	@Override
-	public Pigmento getInfoPigmento(String idDoPigmento) {
-		//SELECT PEGANDO O PIGMENTO ESCOLHIDO A PARTIR DO ID PASSADO NA CLASSE VENDEDOR
+	public Pigmento getInfoPigmento(String idDoPigmento) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+		PigmentoRGB pgRGB = new PigmentoRGB();
+		PigmentoCMYK pgCMYK = new PigmentoCMYK();
+		PreparedStatement stmtRGB = this.getConnection().prepareStatement(EstoqueSQLDAO.SELECT_INFO_PIGMENTORGB);
+		stmtRGB.setString(1, idDoPigmento);
+		ResultSet resultSet = stmtRGB.executeQuery();
+		
+		if(resultSet.next()) {
+			pgRGB.setId((resultSet.getString("id")));
+			pgRGB.setNome(resultSet.getString("nome"));
+			pgRGB.setPreco(resultSet.getDouble("preco"));
+			pgRGB.setQtdNoEstoque(resultSet.getDouble("qtdNoEstoque"));
+			return pgRGB;
+		}else {
+		
+			PreparedStatement stmtCMYK = this.getConnection().prepareStatement(EstoqueSQLDAO.SELECT_INFO_PIGMENTOCMYK);
+			stmtCMYK.setString(1, idDoPigmento);
+			resultSet = stmtCMYK.executeQuery();
+			
+			if(resultSet.next()) {
+				pgCMYK.setId((resultSet.getString("id")));
+				pgCMYK.setNome(resultSet.getString("nome"));
+				pgCMYK.setPreco(resultSet.getDouble("preco"));
+				pgCMYK.setQtdNoEstoque(resultSet.getDouble("qtdNoEstoque"));
+				return pgCMYK;
+			}
+		}
+		
 		return null;
 	}
 
@@ -79,11 +111,11 @@ public class EstoqueSQLDAO extends ConnectionDAO implements EstoqueDAO {
 			ResultSet rSet = stmt.executeQuery();
 			while(rSet.next()) {
 				PigmentoCMYK pigCMYK = new PigmentoCMYK();
-				pigCMYK.setId((rSet.getString("idPigmento")));
+				pigCMYK.setId((rSet.getString("id")));
 				pigCMYK.setNome(rSet.getString("nome"));
 				pigCMYK.setPreco(rSet.getDouble("preco"));
 				pigCMYK.setQtdNoEstoque(rSet.getDouble("qtdNoEstoque"));
-				pigCMYK.setCyan(rSet.getInt("cyan"));
+				pigCMYK.setCyan(rSet.getInt("cianno"));
 				pigCMYK.setMagenta(rSet.getInt("magenta"));
 				pigCMYK.setYellow(rSet.getInt("yellow"));
 				pigCMYK.setKeyBlack(rSet.getInt("keyblack"));

@@ -1,11 +1,9 @@
 package model;
-import java.awt.Color;
-import java.io.Serializable;
 
-public abstract class Pigmento implements Serializable {
+public abstract class Pigmento implements IPigmentoCalculo {
 	
 	private String nome;
-	private String idPigmento;
+	private String id;
 	private double qtdNoEstoque;
 	private double preco;
 	
@@ -18,7 +16,7 @@ public abstract class Pigmento implements Serializable {
 	}
 	
 	public Pigmento() {
-		
+		super();
 	}
 	
 	public String getNome() {
@@ -30,11 +28,11 @@ public abstract class Pigmento implements Serializable {
 	}
 	
 	public String getId() {
-		return idPigmento;
+		return id;
 	}
 	
-	public void setId(String idPigmento) {
-		this.idPigmento = idPigmento;
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 	public double getQtdNoEstoque() {
@@ -53,6 +51,5 @@ public abstract class Pigmento implements Serializable {
 		this.preco = preco;
 	}
 	
-	public abstract Double findDistanciaEuclidiana(Color codigoHexEmRGB);
 	
 }

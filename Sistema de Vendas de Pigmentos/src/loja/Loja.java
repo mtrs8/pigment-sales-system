@@ -1,5 +1,6 @@
 package loja;
 
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Pigmento;
@@ -16,7 +17,12 @@ public class Loja implements LojaApp {
 	}
 	
 	public void selecionarPigmento(String codigoHexadecimal) {
-		 this.pigmentoSelecionado = this.vendedor.getInfoDoPigmentoSelecionado(codigoHexadecimal);
+		 try {
+			this.pigmentoSelecionado = this.vendedor.getInfoDoPigmentoSelecionado(codigoHexadecimal);
+		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		 
 	}
 
@@ -24,7 +30,6 @@ public class Loja implements LojaApp {
 	public void consultarPigmento(double qtdSolicitada) {
             try {
                 this.vendedor.consultarPigmentosPorQuantidade(qtdSolicitada);
-                //PODE DAR EXCEPTION QUANDO N�O TEM NENHUM PIGMENTO COM A QUANTIDADE DESEJADA
             } catch (Exception ex) {
                 Logger.getLogger(Loja.class.getName()).log(Level.SEVERE, null, ex);
             }
