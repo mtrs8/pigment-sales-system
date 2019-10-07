@@ -17,7 +17,6 @@ public class LojaConsoleUI {
 	public LojaConsoleUI() {
 		this.loja = new Loja();
 		this.sc = new Scanner(System.in);
-		
 	}
 	
 	private void solicitarPigmento() {
