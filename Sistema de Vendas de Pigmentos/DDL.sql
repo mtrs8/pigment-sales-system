@@ -33,3 +33,15 @@ INSERT INTO estoque.pigmentorgb(idPigmento, nome, preco, qtdNoEstoque, red, gree
 ('rgbpig13', 'verde', 4.25, 20.5, 0,128,0),
 ('rgbpig14', 'roxo', 5.0, 10, 128,0,128),
 ('rgbpig15', 'azul-naval', 4.70, 10, 0,0,128);
+
+INSERT INTO pigmentocmyk(id, nome, preco, quantity, cianno, magenta, yellow, black)
+VALUES('cmykpig1', 'Vermelho', 5.00, 20, 0, 1, 1, 0),
+('cmykpig2', 'Branco', 7.50, 30, 0, 0, 0, 0),
+('cmykpig3', 'Azul', 5.00, 20, 1, 1, 0, 0),
+('cmykpig4', 'Preto', 7.50, 30, 0, 0, 0, 1),
+('cmykpig5', 'Rosa', 5.00, 20, 0.0000, 0.9244, 0.4244, 0.0667),
+('cmykpig6', 'Amarelo', 7.50, 30, 0, 0, 1, 0),
+('cmykpig7', 'Ciano', 9.50, 10, 1, 0, 0, 0),
+('cmykpig8', 'Magenta', 9.50, 10, 0, 1, 0, 0),
+('cmykpig9', 'Marrom', 9.50, 10, 0.0000,0.2446,0.2446,0.4549);
+
