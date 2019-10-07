@@ -1,21 +1,21 @@
-CREATE TABLE `estoque`.`pigmentorgb` (
-  `idPigmento` VARCHAR(8) NULL,
-  `nome` VARCHAR(45) NULL,
-  `preco` DOUBLE NULL,
-  `qtdNoEstoque` DOUBLE NULL,
-  `red` INT NULL,
-  `green` INT NULL,
-  `blue` INT NULL);
+CREATE TABLE pigmentorgb (
+  idPigmento VARCHAR(8) NULL,
+  nome VARCHAR(45) NULL,
+  preco DOUBLE NULL,
+  qtdNoEstoque DOUBLE NULL,
+  red INT NULL,
+  green INT NULL,
+  blue INT NULL);
   
-  CREATE TABLE `pigmentocmyk` (
-  `idPigmento` varchar(8) NOT NULL,
-  `nome` varchar(45) NOT NULL,
-  `preco` double NOT NULL,
-  `qtdNoEstoque` double NOT NULL,
-  `cyan` int(11) NOT NULL,
-  `magenta` int(11) NOT NULL,
-  `yellow` int(11) NOT NULL,
-  `keyblack` int(11) NOT NULL
+  CREATE TABLE pigmentocmyk (
+  idPigmento varchar(8) NOT NULL,
+  nome varchar(45) NOT NULL,
+  preco double NOT NULL,
+  qtdNoEstoque double NOT NULL,
+  cyan INT NOT NULL,
+  magenta INT NOT NULL,
+  yellow INT NOT NULL,
+  keyblack INT NOT NULL
 );
 
 INSERT INTO estoque.pigmentorgb(idPigmento, nome, preco, qtdNoEstoque, red, green, blue) VALUES('rgbpig1', 'preto', 2.30, 10, 0, 0, 0 ),
