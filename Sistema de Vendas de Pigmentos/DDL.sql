@@ -12,10 +12,10 @@ CREATE TABLE pigmentorgb (
   nome varchar(45) NOT NULL,
   preco double NOT NULL,
   qtdNoEstoque double NOT NULL,
-  cyan INT NOT NULL,
-  magenta INT NOT NULL,
-  yellow INT NOT NULL,
-  keyblack INT NOT NULL
+  cyan DOUBLE NOT NULL,
+  magenta DOUBLE NOT NULL,
+  yellow DOUBLE NOT NULL,
+  keyblack DOUBLE NOT NULL
 );
 
 INSERT INTO pigmentorgb(idPigmento, nome, preco, qtdNoEstoque, red, green, blue) VALUES('rgbpig1', 'preto', 2.30, 10, 0, 0, 0 ),
