@@ -18,7 +18,7 @@ CREATE TABLE pigmentorgb (
   keyblack INT NOT NULL
 );
 
-INSERT INTO estoque.pigmentorgb(idPigmento, nome, preco, qtdNoEstoque, red, green, blue) VALUES('rgbpig1', 'preto', 2.30, 10, 0, 0, 0 ),
+INSERT INTO pigmentorgb(idPigmento, nome, preco, qtdNoEstoque, red, green, blue) VALUES('rgbpig1', 'preto', 2.30, 10, 0, 0, 0 ),
 ('rgbpig2', 'branco', 2.0, 10, 255,255,255 ),
 ('rgbpig3', 'vermelho', 2.50, 10, 255,0,0),
 ('rgbpig4', 'lima', 2.70, 32, 0,255,0),
